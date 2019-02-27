@@ -5,24 +5,21 @@
 * [README](README.md)
 * [References](references.md)
 
-
-## 이론 
+## 이론
 
 * [README](intro/README.md)
 * [Kalman 필터](intro/kalman.md)
 * [Ex-Kalman 필터](intro/exkalman.md)
 * [Particle 필터](intro/particle.md)
 
-
-
-## Implementation 
+## Implementation
 
 * [README](implementation/README.md)
 * [pykalman](implementation/pykalman.md)
+* [snippet](implementation/snippet.md)
 
-
-
-## 활용 
+## 활용
 
 * [센서 퓨전](https://legacy.gitbook.com/book/adioshun/sensor_fusion/details)
 * [Tracking](https://legacy.gitbook.com/book/adioshun/object-tracking/details)
+
