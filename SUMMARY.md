@@ -9,6 +9,10 @@
 ## 이론 
 
 * [README](intro/README.md)
+* [Kalman 필터](intro/kalman.md)
+* [Ex-Kalman 필터](intro/exkalman.md)
+* [Particle 필터](intro/particle.md)
+
 
 
 ## Implementation 
