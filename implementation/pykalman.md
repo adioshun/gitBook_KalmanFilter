@@ -106,6 +106,11 @@ for t in range(n_timesteps-1):
   )
 ```
 
+이러한 값을 찾는것은 쉬운 일이 아니며 `section on fitting`에서 자세히 살펴볼 것이다. `The selection of these variables is not an easy one, and, as shall be explained in the section on fitting,` should not be left to KalmanFilter.em() alone. 
+
+If one ignores the random noise, the parameters dictate that the next state and the current measurement should be an affine function of the current state. The additive noise term is then simply a way to deal with unaccounted error.
+
+A simple example to illustrate the model parameters is a free falling ball in one dimension. The state vector can be represented by the position, velocity, and acceleration of the ball, and the transition matrix is defined by the equation:
 
 
 
