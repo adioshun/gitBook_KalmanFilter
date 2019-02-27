@@ -110,21 +110,118 @@ for t in range(n_timesteps-1):
 
 If one ignores the random noise, the parameters dictate that the next state and the current measurement should be an affine function of the current state. The additive noise term is then simply a way to deal with unaccounted error.
 
-A simple example to illustrate the model parameters is a free falling ball in one dimension. The state vector can be represented by the position, velocity, and acceleration of the ball, and the transition matrix is defined by the equation:
+모델 파라미터의 간단한 예는 떨어지는 공과 같다. `A simple example to illustrate the model parameters is a free falling ball in one dimension. `
 
+상태벡터는 위치, 속도, 가속도로 표현될수 있으며 `transition matrix`는 아래 공식으로 구할수 있다. `The state vector can be represented by the position, velocity, and acceleration of the ball, and the transition matrix is defined by the equation:`
+```python 
+position[t+dt] = position[t] + velocity[t] dt + 0.5 acceleration[t] dt^2
+```
 
+Taking the zeroth, first, and second derivative of the above equation with respect to dt gives the rows of transition matrix:
+
+```python
+A = np.array([[1, t, 0.5 * (t**2)],
+              [0, 1,            t],
+              [0, 0,            1]])
+```
+
+We may also set the transition offset to zero for the position and velocity components and -9.8 for the acceleration component in order to account for gravity’s pull.
+
+It is often very difficult to guess what appropriate values are for for the transition and observation covariance, so it is common to use some constant multiplied by the identity matrix. 
+
+Increasing this constant is equivalent to saying you believe there is more noise in the system. 
+
+This constant is the amount of variance you expect to see along each dimension during state transitions and measurements, respectively.
 
 
 
 #### B. Inferring States
 
+The KalmanFilter class comes equipped with two algorithms for prediction: 
+- the Kalman Filter and 
+- the Kalman Smoother. 
+
+차이점 : While the former(칼만필터) can be updated recursively (making it ideal for online state estimation), the latter(칼만스무스) can only be done in batch. 
+- These two algorithms are accessible via KalmanFilter.filter(), KalmanFilter.filter_update(), and KalmanFilter.smooth().
+
+
+칼만 스무스 : Functionally, Kalman Smoother should always be preferred. Unlike the Kalman Filter, the Smoother is able to incorporate “future” measurements as well as past ones at the same computational cost of O(Td^3) where 
+- T is the number of time steps and 
+- d is the dimensionality of the state space. 
+
+칼만 필터가 더 좋은 이유 : The only reason to prefer the Kalman Filter over the Smoother is in its ability to incorporate new measurements in an online manner:
+
+```python 
+>>> means, covariances = kf.filter(measurements)
+>>> next_mean, next_covariance = kf.filter_update(
+    means[-1], covariances[-1], new_measurement
+)
+```
+
+두 알고리즘 모두 시간에 따라 가변적인 파라미터를 사용할수 있다. `Both the Kalman Filter and Kalman Smoother are able to use parameters which vary with time. `
+- In order to use this, one need only pass in an array `n_timesteps` in length along its first axis:
+
+```python 
+>>> transition_offsets = [[-1], [0], [1], [2]]
+>>> kf = KalmanFilter(transition_offsets=transition_offsets, n_dim_obs=1)
+```
+
+> 참고 코드 : `examples/standard/plot_online.py` Online State Estimation
+> 참고 코드 : `examples/standard/plot_filter.py` Filtering and Smoothing
+
 
 #### C. Optimizing Parameters
+
+In addition to the Kalman Filter and Kalman Smoother, the `KalmanFilter class` implements the **Expectation-Maximization algorithm**. 
+
+This iterative algorithm is a way to maximize the likelihood of the observed measurements (recall the probabilistic model induced by the model parameters), which is unfortunately a non-convex optimization problem. 
+
+
+EM알고리즘 사용시 고려 할점 #1 : This means that even when the EM algorithm converges, there is no guarantee that it has converged to an optimal value. 
+- Thus it is important to select good initial parameter values.
+
+EM알고리즘 사용시 고려 할점 #2 : A second consideration when using the EM algorithm is that the algorithm lacks regularization, meaning that parameter values may diverge to infinity in order to make the measurements more likely. 
+
+Thus it is important to choose which parameters to optimize via the `em_vars` parameter of KalmanFilter. 
+
+
+For example, in order to only optimize the `transition` and `observation covariance matrices`, one may instantiate KalmanFilter like so:
+
+```
+>>> kf = KalmanFilter(em_vars=['transition_covariance', 'observation_covariance'])
+```
+
+It is customary optimize only the `transition_covariance`, `observation_covariance`, `initial_state_mean`, and `initial_state_covariance`, which is the default when `em_vars` is unspecified. 
+
+오버피팅 방지를 위해 EM알고리즘의 `반복 횟수`를 지정 할수도 있다. `In order to avoid overfitting, it is also possible to specify the `number of iterations` of the EM algorithm to run during fitting:`
+
+```python 
+>>> kf.em(X, n_iter=5)
+```
+
+Each iteration of the EM algorithm requires running the Kalman Smoother anew, so its computational complexity is O(Tnd^3) 
+- where T is the number of time steps, 
+- n is the number of iterations, and 
+- d is the size of the state space.
+
+
+> 참고 코드 : `examples/standard/plot_em.py` Using the EM Algorithm
 
 
 #### D. Missing Measurements
 
+실환경에서 센서 데이터가 수집 되지 않는 경우는 흔하며 이에 대처 하는 방법도 적용 되어 있다. `In real world systems, it is common to have sensors occasionally fail. The Kalman Filter, Kalman Smoother, and EM algorithm are all equipped to handle this scenario. `
 
+방법 : To make use of it, one only need apply a NumPy mask to the measurement at the missing time step:
+
+```python 
+>>> from numpy import ma
+>>> X = ma.array([1,2,3])
+>>> X[1] = ma.masked  # hide measurement at time step 1
+>>> kf.em(X).smooth(X)
+```
+
+> 참고 코드 : `examples/standard/plot_missing.py` State Estimation with Missing Observations
 
 
 ### 2.2 Mathematical Formulation
