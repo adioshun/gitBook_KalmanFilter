@@ -5,6 +5,16 @@
 The Kalman filter (KF) is a popular choice for estimating motion in robotics. Since position information is linear, standard Kalman filtering can be easily applied to the tracking problem without much difficulty.
 However, most robotic motions also contain nonlinearity requiring a modification to the KF.
 
+장점 `The advantages of Kalman Filter are:`
+- No need to provide labeled training data
+- Ability to handle noisy observations
+
+단점` The disadvantages are:`
+- Computational complexity is cubic in the size of the state space
+- Parameter optimization is non-convex and can thus only find local optima
+- Inability to cope with non-Gaussian noise
+
+
 ## 2. EKF
 
 The extended Kalman filter (EKF) provides this modification by linearizing all nonlinear models (i.e., process and measurement models) so the traditional KF can be applied.
