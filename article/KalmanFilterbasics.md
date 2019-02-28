@@ -173,15 +173,78 @@ STEP A단계에서 이 측정값(z)과 예측값(x)을 비교 한다. `As stated
 
 매트릭스 연산의 기초에 따라 matrix H는 `2 x 4` 이다. `Getting into matrices basics, to convert a 4 x 1 ‘x’ matrix to 2 x 1 ‘z’ matrix (while keeping top two values as it is and removing velocity variables) we use a 2 x 4 matrix H. `
 
-비교 공식 : So the equation comparing **predicted value** with **measurement** becomes $$y = z - Hx$$, 
+비교 공식 : So the equation comparing **predicted value** with **measurement** becomes 
+
+$$y = z - Hx$$, 
+
+
 - 결과로 **다름정도** 출력 `which gives us the difference between both values.`
 
 
+###### kalman gain 계산 
+
+Well, in this step, we will also be calculating Kalman gain. 
+
+Gain Factor는 차량 state의 **final value**를 결정하는데 사용된다. `This gain factor is basically used to decide final value for vehicle state`
+- 예측값과 측정값 사이에서 선택 된다. `,choosing an appropriate value between predicted and measurement one’s. `
+
+이미 예측값의 불확실성은 `State Covariance matrix P`라는것은 알고 있다. `We have already seen uncertainty in predicted value as State Covariance matrix P.` 
+
+측적값의 불확식성은 `Measurement Covariance matrix R`이다. `The corresponding uncertainty matrix for measurement readings is Measurement Covariance matrix, denoted with letter R.`
+
+Our state variable was having 4 variables (`x, y position and velocity`) so its **covariance matrix** was a `4 x 4` matrix. 
+
+Lidar센서는 위치 정보 x,y만 알수 있다. 따라서 **Measurement Covariance Matrix**는 `2x2`이다. `As stated before, lets consider that our sensor just gives us positional reading in x and y directions. In that case our Measurement Covariance Matrix will be of 2 x 2 shape as shown below.`
+
+```python 
+R = [ 
+    [variance_in_pos_x_reading, 0]
+    [0, variance_in_pos_y_reading]
+```
+
+칼만게인에서는 예측과 측정 방법의 불확실성을 비교한다. 비교 방법은 전체 불확실성에서 예측값의 불확실성 퍼센트로 계산한다. `In Kalman gain value, we compare uncertainty in predict and measurement methods by calculating percentage of uncertainty in predicted value to that of total uncertainty. `
+
+In other words
+
+$$
+
+Kalman Gain = \frac{Uncertainty\_in\_predicted\_state}{(Uncertainty\_in\_predicted\_state + Uncertainty\_in\_measurement\_readings\)}
+$$
 
 
+We know 
+- uncertainty in predicted state is matrix P and 
+- that in measured value is matrix R. 
+
+크기 변환 H matrix `But as you can see, both of them are of different size. Hence we use H matrix to convert P matrix to correct size. `
 
 
+최종 칼만 게인 공식 `With that the Kalman Gain equation becomes `
 
+$$
+K = \frac{( P * HT )}{( ( H * P * HT ) + R )}
+$$
+
+
+H Matrix required to calculate Kalman Gain with a `4 x 4` P Matrix and `2 x 2` R matrix will be as shown below
+
+```python 
+H = [ 
+    [1, 0, 0, 0],
+    [0, 1, 0, 0]
+    ]
+```
+
+P매트리스에 H매트리스를 덧붙이는건 매트릭스 연산때문이다. `Again, the padding of H matrix around P matrix is only for matrix operation, please don’t let it scare you. `
+
+칼만게인은 단순한 **퍼센트** 구하는 공식이다. `Kalman gain is just a simple percentage formula.`
+
+아래의 모든것이 준비 되었다.  `Well, with precited value, measure value and Kalman gain values in hand, its time to move to update state, where we make final update to state vector x and its corresponding covariance matrix P.`
+- precited value, 
+- measure value 
+- Kalman gain values
+
+이제 **update state**를 진행 할수 있다. 이 단계에서 마지막으로  state vector x 와 covariance matrix P를 업데이트 한다.
 
 
 
