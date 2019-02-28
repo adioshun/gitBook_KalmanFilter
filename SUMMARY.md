@@ -13,17 +13,16 @@
 * [Ex-Kalman 필터](intro/exkalman.md)
 * [Particle 필터](intro/particle.md)
 
+## Article
 
-## Article 
-
-* [Kalman Filter basics/code](article/KalmanFilterbasics.md)
-
+* [Kalman Filter basics](article/KalmanFilterbasics.md)
 
 ## Implementation
 
 * [README](implementation/README.md)
 * [pykalman](implementation/pykalman.md)
 * [snippet](implementation/snippet.md)
+  * [KalmanFilter-basic-code](implementation/snippet/kalmanfilter-basic-code.md)
 
 ## 활용
 
