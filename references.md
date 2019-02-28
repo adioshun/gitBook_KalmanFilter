@@ -21,9 +21,13 @@
     - http://refopen.blogspot.kr/2014/08/slamsimultaneous-localization-and_21.html
     - http://refopen.blogspot.kr/2014/08/slamsimultaneous-localization-and_24.html
 
+- [Sensor Fusion — Part 1: Kalman Filter basics](https://towardsdatascience.com/sensor-fusion-part-1-kalman-filter-basics-4692a653a74c)
+
+- [Sensor Fusion — Part 2: Kalman Filter Code](https://towardsdatascience.com/sensor-fusion-part-2-kalman-filter-code-78b82c63dcd)
 
 
-## 3. Tutorial (Series, )
+
+## 3. Tutorial (Series)
 
 - [[추천] 쥬피터 모음](https://github.com/balzer82/Kalman)
 
