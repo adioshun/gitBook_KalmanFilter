@@ -4,6 +4,7 @@
 
 * [README](README.md)
 * [References](references.md)
+* [마인드맵](https://mind42.com/mindmap/0b2af76d-b9be-4648-8ce9-0bc45cf4ac97)
 
 ## 이론
 
