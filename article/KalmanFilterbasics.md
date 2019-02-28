@@ -20,6 +20,9 @@
 
 ### 1.1 Predict 
 
+
+#### A. Input & kinematic equations
+
 기본적 속도, 거리, 시간 정보로 공식 세움 `Using basic equations of velocity, distance and time, we know that if position of my vehicle at time t is at x location, then at time t+1 the vehicle will be at location x + ((t + 1) — t) * v, where v is velocity of vehicle. `
 - x + ((t + 1) — t) * v 
 
@@ -57,24 +60,37 @@ A simple justification being, if we consider above 4 equations, a controller wil
 
 All these operations will have to be performed one time each for each equation. 
 
-예 : 심부름 `To explain analogy better, let’s say your mom asks you to go to grocery and bring some Onions (being analogous to getting Px, vx, ax values from memory). `
-- 양파 사와라, 도구 사와라, 토마토 사와라 등등(=매 순간 센서 리딩)...그냥 처음에 살것들 목록을 주는게 좋지 않을까? `Being the obedient child you are, you go immediately and bring it. She then asks you to cut them (analogous to mathematical operations), you do that, and then just when you were about to watch your Football game, she asks you to bring Tomatoes from store. Again, being the obedient child, you go back and bring tomatoes, gather all equipment (knives, cutting pad and a bowl to keep them), cut tomatoes and store it for her. And then she asks you to bring some fruits…and them some more. You get the gist here, suffice to say, you won’t be a happy kid that evening. Wouldn’t it have been sooooo much better if your mom had given you all the list of things to bring and instructed you to cut them before you start your tasks. Same goes for computers.`
-
-
 Coming back to 1s and 0s, lets convert our 4 individual equations into following matrix form. 
 
 So now our 4 equation gets clubbed together and they look like this.
 
-$$ x_new = A * x + B * u $$
+$$ x_{new} = A * x + B * u $$
 
 ![](https://cdn-images-1.medium.com/max/1600/1*MaQHT-LfjvssRgZlszejQg.png)
+
+```python 
+
+A = [
+    [1, 0, Δt, 0],
+    [0, 1, 0, Δt],
+    [0, 0, 1, 0],
+    [0, 0, 0, 1]
+    ]
+
+B = [
+    [0.5 * Δt * Δt, 0],
+    [0, 0.5*Δt * Δt],
+    [Δt, 0],
+    [0, Δt]
+    ]
+```
 
 
 첫행 : Taking first row from above matrix equation
 
 $$
 
-px\_new = [(1 * px) + (0 * py) + (delta_t * vx) + (0 * vy) ] + [ (0.5 * delta_t * delta_t * acceleration_x) + (0 * acceleration_y) ]
+px_{new} = [(1 * px) + (0 * py) + (delta_t * vx) + (0 * vy) ] + [ (0.5 * delta_t * delta_t * acceleration_x) + (0 * acceleration_y) ]
 $$
 $$
 px\_new = px + delta_t * vx + 0.5 * acceleration_x * delta_t 2
@@ -85,12 +101,8 @@ which is same as one we had come up with before converting individual equations 
 Here **matrix A and B** are just matrices representing **kinematic equations** for position, velocity and acceleration.
 
 
-다음 예 : 
-- 추가 심부름 발생 
-- 축구 경기를 봐야 함으로 나중에 가기로 함
-- 언제 갈껀데? 
-- **약 ** 두시간 후 (불확실성) 
-`Oh, but wait..uuhh…mom is asking ..to….go…bbaacck…to grocery (and she is apologetic about it this time)…so you snap back and say hey mom, I got this football game to see, I cant go right now. And mom says so tell me (Predict) when can you go. And you reply I will go in about 2 hrs. So what’s the interesting part about this conversation you ask…well it’s the “about” part. As you can sense, you are little bit uncertain about the time when you can go back. You know it will be in 2 hrs, but there is little bit of +- 10 (or 15 or pick a number) minutes of uncertainty you are not sure about. Maybe there is lot of extra time added in game, maybe game is getting boring (read it as your team is losing) and you decide not to wait till end, or maybe it was a great victory in a derby match and you want to wait and watch after match celebration and expert analysis.`
+#### B. State Covariance Matrix P (불확실) 
+
 
 
 컴퓨터에도 불확실성은 존재 `This uncertainty factor holds true for computers too. `
@@ -102,8 +114,6 @@ Here **matrix A and B** are just matrices representing **kinematic equations** f
 In Kalman filter language this **uncertainty** is represented as **covariance matric**. 
 
 > 칼만 필터에서 불확실성은 **covariance matric**로 표현 된다. 
-
-###### State Covariance Matrix
 
 Lets denote our State Covariance Matrix as
 
@@ -126,7 +136,7 @@ P = [variance_px, 0, 0, 0],
 
 This actually makes it a ‘variance’ matrix, but **covariance** is much more widely used term.
 
-###### Noise Covariance matrix
+#### C. Noise Covariance matrix Q
 
 공식이 복작해 지긴 하지만 **Noise Covariance matrix Q**도 포함 해야 한다. `At the risk of making our equations a bit complex, I want to introduce Process Noise Covariance matrix Q. `
 
@@ -139,9 +149,9 @@ This actually makes it a ‘variance’ matrix, but **covariance** is much more 
 우리는 이미 **updating state vector** 공식은 알고 있으며 **update covariance matrix** 공식은 아래와 같다. `We already have equations for updating state vector, and the equation to update covariance matrix is as given below.`
 
 
-$$ State vector: x = A * x + B * u$$
+$$ State\_vector: x = A * x + B * u$$
 
-$$ Covariance matrix: P = A * P * AT * Q$$
+$$ Covariance\_matrix: P = A * P * AT * Q$$
 
  
 **step a of predicting**의 최종 공식 `And with this we conclude our step a of predicting with following two equations.`
@@ -239,8 +249,8 @@ P매트리스에 H매트리스를 덧붙이는건 매트릭스 연산때문이�
 
 칼만게인은 단순한 **퍼센트** 구하는 공식이다. `Kalman gain is just a simple percentage formula.`
 
-아래의 모든것이 준비 되었다.  `Well, with precited value, measure value and Kalman gain values in hand, its time to move to update state, where we make final update to state vector x and its corresponding covariance matrix P.`
-- precited value, 
+아래의 모든것이 준비 되었다.  `Well, with predicted value, measure value and Kalman gain values in hand, its time to move to update state, where we make final update to state vector x and its corresponding covariance matrix P.`
+- predicted value, 
 - measure value 
 - Kalman gain values
 
