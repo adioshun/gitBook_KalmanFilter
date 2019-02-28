@@ -23,6 +23,22 @@ $ sudo python setup.py install
 
 ## 2. Kalman Filter User’s Guide
 
+The Kalman Filter is a unsupervised algorithm for tracking a single object in a continuous state space. 
+
+Given a sequence of noisy measurements, the Kalman Filter is able to recover the “true state” of the underling object being tracked.
+
+장점 `The advantages of Kalman Filter are:`
+- No need to provide labeled training data
+- Ability to handle noisy observations
+
+단점` The disadvantages are:`
+- Computational complexity is cubic in the size of the state space
+- Parameter optimization is non-convex and can thus only find local optima
+- Inability to cope with non-Gaussian noise
+
+
+
+
 ### 2.1 Basic Usage 
 
 구현물 `This module implements two algorithms for tracking / one algorithm for parameter learner: `
@@ -227,7 +243,27 @@ Each iteration of the EM algorithm requires running the Kalman Smoother anew, so
 ### 2.2 Mathematical Formulation
 
 
+> [추후 참고](https://pykalman.github.io/#mathematical-formulation)
+
 ## 3. Unscented Kalman Filter User’s Guide
+
+같은점 : Like the Kalman Filter, the Unscented Kalman Filter is an unsupervised algorithm for tracking a single target in a continuous state space. 
+
+다른점 : The difference is that while the Kalman Filter restricts dynamics to affine functions, the Unscented Kalman Filter is designed to operate under **arbitrary dynamics**.
+
+
+장점 `The advantages of the Unscented Kalman Filter implemented here are:`
+- Ability to handle non-affine state transition and observation functions
+- Ability to handle not-quite-Gaussian noise models
+- Same computational complexity as the standard Kalman Filter
+
+단점 `The disadvantages are:`
+- No method for learning parameters
+- Lack of theoretical guarantees on performance
+- Inability to handle extremely non-Gaussian noise
+
+
+
 
 ### 3.1 Basic Usage 
 

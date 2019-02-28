@@ -27,6 +27,17 @@ To address these limitations, the unscented Kalman filter (UKF) was developed. T
 The UKF is a powerful nonlinear estimation technique and has been shown to be a superior alternative to the EKF in a variety of applications.
 
 
+장점 `The advantages of the Unscented Kalman Filter implemented here are:`
+- Ability to handle non-affine state transition and observation functions
+- Ability to handle not-quite-Gaussian noise models
+- Same computational complexity as the standard Kalman Filter
+
+단점 `The disadvantages are:`
+- No method for learning parameters
+- Lack of theoretical guarantees on performance
+- Inability to handle extremely non-Gaussian noise
+
+
 > 세개의 칼만필터 분석 : `A Comparison of Unscented and Extended Kalman Filtering for Estimating Quaternion Motion.`
 
 
