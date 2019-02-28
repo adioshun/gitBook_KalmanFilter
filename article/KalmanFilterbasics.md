@@ -250,6 +250,44 @@ P매트리스에 H매트리스를 덧붙이는건 매트릭스 연산때문이�
 
 ### 1.3 Update
 
+final state vector : $$ x = x + Ky. $$
+
+```
+# 예측값이 정확할때 
+Imagine we are very confident in our predicted value, then our covariance P will have very small variance values. 
+
+This in turn will make Kalman Gain ( which is Uncertainity in predicted state / Uncertainity in predicted state + Uncertainity in measurement readings.) a small number as final equation will be of form small number / (small number + big number). 
+
+In this case, if we consider final x equation, we take our predicted value and just add a small portion of it’s difference (that is, difference between predicted and measured values) to measured value. 
+
+Because Kalman gain will be a small value as per above theory, equation of x will be of form; x = x + (small number * y)
+```
+
+As you can see, this will cause final x to lean more towards predicted value, which is in line with starting assumption we made that we have high confidence in predicted value compared to measured value. 
+
+Similarly, the equation to **update covariance matrix** is 
+
+$$
+P = (I-KH) P. 
+$$
+
+> Again, H matrix is used for matrix manipulations.
+
+최종 공식 `And with that we have all the tools required to implement a complete Kalman Filter with following equations`
+
+
+|A. Predict |B. Measurement|C. Update|
+|-|-|-|
+|$$ X = A * X + B * u $$ <br> $$ P = A * P * AT * Q $$ | $$ Y = Z — H * X $$ <br> $$ K = ( P * HT ) / ( ( H * P * HT ) + R ) $$  | $$ X = X + K * Y $$ <br> $$ P = ( I — K * H ) * P $$|
+
+
+--- 
+
+
+
+
+
+
 
 
 
