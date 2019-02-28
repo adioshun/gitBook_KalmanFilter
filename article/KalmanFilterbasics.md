@@ -112,10 +112,69 @@ P = [variance_px, 0, 0, 0],
     [0, variance_py, 0, 0],
     [0, 0, variance_vx, 0],
     [0, 0, 0, variance_vy]
-```
+    """
+    variance_px = uncertainty in predicted x position
+    variance_py = uncertainty in predicted y position 
+    variance_vx = uncertainty in predicted x velocity 
+    variance_vy = uncertainty in predicted y velocity  
+    """
+    ```
+
+0의 의미 : 서로 비의존적이다. `All the remaining 0 terms are to say that uncertainty in one value is independent of other value, meaning to say my position x uncertainty is nothing to do with my uncertainty in y direction. `
+
+> - 항상 비 의존적이지는 않지만 간소화를 의해 본 예시에서는 0으로 처리 `This need not be true in every case. In some case the variables you are tracking may actually depend on each other. But we will use the simplistic approach here and make other values as 0.`
+
+This actually makes it a ‘variance’ matrix, but **covariance** is much more widely used term.
+
+###### Noise Covariance matrix
+
+공식이 복작해 지긴 하지만 **Noise Covariance matrix Q**도 포함 해야 한다. `At the risk of making our equations a bit complex, I want to introduce Process Noise Covariance matrix Q. `
+
+계산시 노이즈를 고려 해야함 `In any covariance matrix calculations (which is matrix P in our case), you can have a certain amount of noise which needs to be added into it to come up with a new predicted covariance in the estimation.`
+
+칼만 필터는 순환프로세스 이기에 매 센서 정보 수신시 **covariance matrix**와 함께 predict를 수행 해야 한다. `As Kalman filtering is a continuously iterative process, we need to keep predicting the state vector along with its covariance matrix every time we have a new reading from sensor, `
+- so that we can compare the predicted value (step a) with sensor value (step b) and 
+- update our information about the vehicle we are tracking (step c). 
+
+우리는 이미 **updating state vector** 공식은 알고 있으며 **update covariance matrix** 공식은 아래와 같다. `We already have equations for updating state vector, and the equation to update covariance matrix is as given below.`
+
+
+$$ State vector: x = A * x + B * u$$
+
+$$ Covariance matrix: P = A * P * AT * Q$$
+
+ 
+**step a of predicting**의 최종 공식 `And with this we conclude our step a of predicting with following two equations.`
 
 
 
+
+### 1.2 Measurement
+
+모든 시작은 센서 정보 수신 부터다 
+- Now let’s say we receive a sensor reading for the position of the vehicle we are tracking. 
+- Actually the sequence of operation is, we trigger Kalman filter calculation only when we receive sensor readings. 
+- The sensor reading will usually have a timestamp associated with each reading. 
+
+We read that timestamp, calculate difference between timestamp of last reading and this one. 
+- Perform **prediction** as per above explanation using delta_t = timestamp difference between two readings and 
+- then come to **Measurement** and **update** part for sensor input. 
+
+Lidar센서는 위치 정보는 있지만 속도 정보는 없다. `Commonly use sensors like Lidar and Time of flight sensors will give you readings regarding position of a vehicle, but not its velocity. `
+- So our sensor reading will be of form vector **z = [px, py]. **
+
+STEP A단계에서 이 측정값(z)과 예측값(x)을 비교 한다. `As stated before, we need to compare this measurement value with the value predicted in step a. `
+
+그러나 이 두값은 **different order**이다. `But looking at both vectors (predicted state vector x and measurement vector z), we see that both are of different order. `
+- ‘x’ matrix = 4 x 1 (속도 정보 포함) 
+- ‘z’ matrix = 2 x 1 
+
+따라서, state matrix(x??)를 z와 같은 크기로 변환 하기 위해 **H Matrix**가 필요하다. `Hence to convert state matrix to same size as z, we introduce matrix “H”.`
+
+매트릭스 연산의 기초에 따라 matrix H는 `2 x 4` 이다. `Getting into matrices basics, to convert a 4 x 1 ‘x’ matrix to 2 x 1 ‘z’ matrix (while keeping top two values as it is and removing velocity variables) we use a 2 x 4 matrix H. `
+
+비교 공식 : So the equation comparing **predicted value** with **measurement** becomes $$y = z - Hx$$, 
+- 결과로 **다름정도** 출력 `which gives us the difference between both values.`
 
 
 
