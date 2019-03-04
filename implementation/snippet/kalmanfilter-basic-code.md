@@ -2,7 +2,9 @@
 
 > 이론 설명은 : Article - Kalman Filter basics 참고 (Sensor Fusion — Part 1: Kalman Filter basics)
 
-https://colab.research.google.com/drive/1SZjG07PQxJNfBKLbmGH1_ZZKjFchhfSC#scrollTo=ffMXTGuekEhA
+[깃허브](https://github.com/PercyJaiswal/Kalman_Filter)
+- [Kalman Filter.py](https://github.com/PercyJaiswal/Kalman_Filter/blob/master/Kalman%20Filter.py)
+- [샘플파일.txt](https://github.com/PercyJaiswal/Kalman_Filter/blob/master/obj_pose-laser-radar-synthetic-input.txt)
 
 Udacity’s github 데이터 활용 실습 (`obj_pose-laser-radar-synthetic-input.txt`) 
 - 해당 데이터에는 Lidar + radar이지만 본 실습은 lidar만 활용
@@ -300,22 +302,23 @@ update(z_lidar)
 And finally call Predict and Update functions.
 
 
-## 9. Pridict() 
+## 9. Predict() 
 
 Now lets have a look at our predict() function which would very much similar to the following predict equations that we been using in this series. 
+
+    A. Predict
+     a. X = A * X + B * u
+     b. P = A * P * AT * Q
+
 
 Not much to explain in the code section, its really just a direct replica of derived formulas.
 
 ```python 
-    """
-    A. Predict
-     a. X = A * X + B * u
-     b. P = A * P * AT * Q
-     """
-
 #**********************Define Functions*****************************
 def predict():
     # Predict Step
+
+
     global x, P, Q
     x = np.matmul(A, x)
     At = np.transpose(A)
@@ -323,4 +326,41 @@ def predict():
 ```
 
 
+## 10. update()
+
+Moving ahead to define update() function. 
+
+We will be implementing both ‘measurement’ and ‘update’ steps in this function.
+
+    B. Measurement
+     a. Y = Z — H * X
+     b. K = ( P * HT ) / ( ( H * P * HT ) + R )
+     
+    C. Update
+     a. X = X + K * Y
+     b. P = ( I — K * H ) * P
+
+
+```python 
+def update(z):
+    global x, P    
+    # Measurement update step
+    Y = np.subtract(z_lidar, np.matmul(H, x))
+    Ht = np.transpose(H)
+    S = np.add(np.matmul(H, np.matmul(P, Ht)), R)
+    K = np.matmul(P, Ht)
+    Si = inv(S)
+    K = np.matmul(K, Si)
+    
+    # New state
+    x = np.add(x, np.matmul(K, Y))
+    P = np.matmul(np.subtract(I ,np.matmul(K, H)), P)
+
+```
+
+## 결론 
+
+- 위 코드가 칼만 필터 기본 구조 이다. 
+
+- The only difference in more advanced versions is the different kinematics and sensor equations they use. 
 
