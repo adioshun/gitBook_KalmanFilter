@@ -170,3 +170,157 @@ Vy(t+1) = Vy + ay * delta_t
 ![](https://cdn-images-1.medium.com/max/600/1*KGh-ppbBlYZH6K50MflbNQ.png)
 
 
+Vector V는 다시 두개의 컴포넌트로 분리 가능하다. `The vector v can be decomposed into two components`
+- `G` : a 4 by 2 matrix G which does not contain random variables and 
+- `a` : a 2 by 1 matrix a which contains the random acceleration components:
+
+![](https://cdn-images-1.medium.com/max/800/1*rwU2OtGKev_Tr4omTWpc5Q.png)
+
+- `delta_t` is calculated at each iteration of Kalman Filter, 
+- and as we don’t have any acceleration data, we define `acceleration` 
+    - a as random vector with **zero mean** and 
+    - standard deviations **noise_ax** & **noise_ay**
+
+## covariance matrix Q
+
+Based on our `noise vector` we can define now the new **covariance matrix Q**. 
+
+The covariance matrix is defined as the **expectation value of the noise vector v** times **the noise vector v transpose**. 
+
+So let’s write this down:
+
+![](https://cdn-images-1.medium.com/max/600/1*3kifoOgBrucWtjeheiUY7A.png)
+
+As `G` does not contain random variables, we can put it outside the expectation calculation
+
+![](https://cdn-images-1.medium.com/max/600/1*RKtmd49ZNF-yElMyeEwnnA.png)
+
+`ax` and `ay` are assumed to be uncorrelated noise processes. 
+- This means that the covariance `sigma_axy in Q` is zero.
+
+![](https://cdn-images-1.medium.com/max/600/1*MJ2t3C79ighIQeDx6ccY1Q.png)
+
+
+So after combining everything in one matrix we obtain our 4 by 4 Q matrix:
+
+![](https://cdn-images-1.medium.com/max/800/1*0m-n6cFW5BgopOr9L83VMw.png)
+
+
+At each iteration of Kalman Filter, we will be calculating matrix Q as per above formula. 
+
+## 8. 칼만필터 적용 
+
+이제 모든 변수가 준비 되었으니 매 센서 데이터 수신시 칼만필터를 적용해 보 `With all our variables defined, let’s begin with iterating through sensor data and applying Kalman Filter on them. `
+
+### 8.1 측정값 읽기 
+
+
+```python 
+#**********************Iterate through main loop********************
+#Begin iterating through sensor data
+for i in range (len(measurements)):
+    new_measurement = measurements.iloc[i, :].values
+    if new_measurement[0] == 'L':
+```
+
+라이다를 의미하는 `L`까지 측정값 읽기 `Running a for loop till length of measurements, reading measurement line, checking if it’s a Lidar (‘L’) reading.`
+
+### 8.2 시간 정보 처리 
+
+```python 
+#Calculate Timestamp and its power variables
+cur_time = new_measurement[3]/1000000.0
+dt = cur_time - prv_time
+prv_time = cur_time
+```
+
+시간 정보를 읽어 비교후에 대체 하기 `Get timestamp from current reading, calculate change in time by comparing it with previous timestamp and then replace current timestamp as previous timestamp for next iteration.`
+
+
+### 8.3 delta T계산 (Matrix Q계산시 필요)
+
+```python 
+dt_2 = dt * dt
+dt_3 = dt_2 * dt
+dt_4 = dt_3 * dt
+```
+
+Calculate delta\_t’s (‘dt’ in code) square, cube , and 4th power of delta_t which are required to calculate Q matrix.
+
+### 8.4 Matrix A 업데이트 
+
+```python 
+#Updating matrix A with dt value
+A[0][2] = dt
+A[1][3] = dt
+```
+
+Updating matrix A with delta_t value. 
+
+Delta_t will be multiplied by velocity to come up with positional values.
+
+
+### 8.5 Matrix Q 업데이트 
+
+```python 
+#Updating Q matrix
+Q[0][0] = dt_4/4*noise_ax
+Q[0][2] = dt_3/2*noise_ax
+Q[1][1] = dt_4/4*noise_ay
+Q[1][3] = dt_3/2*noise_ay
+Q[2][0] = dt_3/2*noise_ax
+Q[2][2] = dt_2*noise_ax
+Q[3][1] = dt_3/2*noise_ay
+Q[3][3] = dt_2*noise_ay
+#Updating sensor readings
+z_lidar[0][0] = new_measurement[1]
+z_lidar[1][0] = new_measurement[2]
+#Collecting ground truths
+ground_truth[0] = new_measurement[4]
+ground_truth[1] = new_measurement[5]
+ground_truth[2] = new_measurement[6]
+ground_truth[3] = new_measurement[7]
+
+```
+
+Updating Q matrix. 
+
+If you look back at above derived equations for Q matrix, you can easil corelate below provided lines of code with that.
+
+
+
+### 8.6 Call Predict & update 
+
+```python
+predict()
+update(z_lidar)
+```
+
+
+And finally call Predict and Update functions.
+
+
+## 9. Pridict() 
+
+Now lets have a look at our predict() function which would very much similar to the following predict equations that we been using in this series. 
+
+Not much to explain in the code section, its really just a direct replica of derived formulas.
+
+```python 
+    """
+    A. Predict
+     a. X = A * X + B * u
+     b. P = A * P * AT * Q
+     """
+
+#**********************Define Functions*****************************
+def predict():
+    # Predict Step
+    global x, P, Q
+    x = np.matmul(A, x)
+    At = np.transpose(A)
+    P = np.add(np.matmul(A, np.matmul(P, At)), Q)
+```
+
+
+
