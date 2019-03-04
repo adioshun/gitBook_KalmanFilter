@@ -13,9 +13,17 @@ Udacity’s github 데이터 활용 실습 (`obj_pose-laser-radar-synthetic-inpu
 
 데이터 구조 
 ```
-For a row containing radar data, the columns are: sensor_type (R), rho_measured, phi_measured, rhodot_measured, timestamp, x_groundtruth, y_groundtruth, vx_groundtruth, vy_groundtruth, yaw_groundtruth, yawrate_groundtruth.
+For a row containing radar data, the columns are: 
+- sensor_type (R), 
+- rho_measured, phi_measured, rhodot_measured, 
+- timestamp, 
+- x_groundtruth, y_groundtruth, vx_groundtruth, vy_groundtruth, yaw_groundtruth, yawrate_groundtruth.
 
-For a row containing lidar data, the columns are: sensor_type (L), x_measured, y_measured, timestamp, x_groundtruth, y_groundtruth, vx_groundtruth, vy_groundtruth, yaw_groundtruth, yawrate_groundtruth.
+For a row containing lidar data, the columns are: 
+- sensor_type (L), 
+- x_measured, y_measured, 
+- timestamp, 
+- x_groundtruth, y_groundtruth, vx_groundtruth, vy_groundtruth, yaw_groundtruth, yawrate_groundtruth.
 ```
 
 ## 1. file Read 
