@@ -150,7 +150,7 @@ Q = np.zeros([4, 4])
 
 kinematics공식을 보면 위치와 속도에 대하여 가속도 Factor가 사용되는것을 알수 있다. `If we revisit kinematics equations, you can see that there is an acceleration factor in positional and velocity terms.`
 
- They have been rewritten here for ease.
+They have been rewritten here for ease.
 
 ```
 Px(t+1) = Px + delta_t * vx + 0.5 * ax * delta_t²
@@ -161,6 +161,12 @@ Vy(t+1) = Vy + ay * delta_t
 ```
 
 
-Since the acceleration is unknown we can add it to the noise component, and this random noise would be expressed analytically as the last terms in the equation derived above. 
+가속도는 알려진 정보가 아니므로 noise를 더할수 있다. 그리고 이 무작위 noise는 .... `Since the acceleration is unknown we can add it to the noise component, and this random noise would be expressed analytically as the last terms in the equation derived above. `
 
-So, we have a random acceleration vector v in this form, which is described by a zero mean and a covariance matrix Q.
+
+
+따라서 Vector V는 아래와 같이 Zero Mean과 Covariance matrix Q로 구성 할수 있다. `So, we have a random acceleration vector v in this form, which is described by a zero mean and a covariance matrix Q.`
+
+![](https://cdn-images-1.medium.com/max/600/1*KGh-ppbBlYZH6K50MflbNQ.png)
+
+
