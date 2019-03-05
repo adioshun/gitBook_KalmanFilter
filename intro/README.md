@@ -1,6 +1,12 @@
 # 칼만필터 발전 
 
+필터
+- 측정데이타에 포함된 불확실성(noise)을  필터링하는 것
+- 과거의 측정데이타(기존에 알고있던것)와  새로운 측정데이타를 사용하여   데이터에 포함된 노이즈를 제거시켜 새로운 결과를 **추정(estmate)**하는데 사용하는 알고리즘
+
 ## 1. KF
+
+- 정의 : 과거와 현재값을 가지고  재귀적(recursive)연산(data processing)을 통하여  최적 (optimal) 값을 추적하는 것이다.
 
 The Kalman filter (KF) is a popular choice for estimating motion in robotics. Since position information is linear, standard Kalman filtering can be easily applied to the tracking problem without much difficulty.
 However, most robotic motions also contain nonlinearity requiring a modification to the KF.
