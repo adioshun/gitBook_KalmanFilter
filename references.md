@@ -55,20 +55,6 @@
 ## 8. Research Group / Conference 
 
 
-## 추천 강의
-
-
-
-
- 
-
-
-
-
----
-
-
-
 
 
 
