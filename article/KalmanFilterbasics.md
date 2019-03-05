@@ -279,7 +279,7 @@ $$
 |-|-|-|
 |$$ X = A * X + B * u $$ <br> $$ P = A * P * AT * Q $$ | $$ Y = Z — H * X $$ <br> $$ K = ( P * HT ) / ( ( H * P * HT ) + R ) $$  | $$ X = X + K * Y $$ <br> $$ P = ( I — K * H ) * P $$|
 
-
+![](https://raw.githubusercontent.com/balzer82/Kalman/master/Kalman-Filter-Step.png)
 --- 
 
 

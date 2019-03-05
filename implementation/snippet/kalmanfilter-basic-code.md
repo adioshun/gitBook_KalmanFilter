@@ -9,6 +9,7 @@ Udacity’s github 데이터 활용 실습 (`obj_pose-laser-radar-synthetic-inpu
 - 추후 exKalman filter다룬시 Lidar+radar 실습 진행 
 
 
+
 구현 내용 
 
 ```
@@ -24,6 +25,8 @@ C. Update
  a. X = X + K * Y
  b. P = ( I — K * H ) * P
 ```
+![](https://raw.githubusercontent.com/balzer82/Kalman/master/Kalman-Filter-Step.png)
+
 
 
 데이터 구조 
