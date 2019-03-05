@@ -30,7 +30,7 @@
 
 ## 3. Tutorial (Series)
 
-- [[추천] 쥬피터 모음](https://github.com/balzer82/Kalman)
+- [Multidimensional Kalman-Filter](https://github.com/balzer82/Kalman) : 추천 
 
 
 ## 4. Youtube
