@@ -1,5 +1,7 @@
 # 칼만 필터 
 
+
+
 ## 1. List
 
 
@@ -11,7 +13,13 @@
 ## 3. Article (Post, blog, etc.)
 
 
+### 3.1 일반 
+
+
 - 표윤석, ROS 로봇 프로그래밍, 349page 참고 
+
+
+### 3.2 칼만필터
 
 - [How a Kalman filter works, in pictures](http://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/)
 
@@ -26,6 +34,20 @@
 
 - ~~[Sensor Fusion — Part 2: Kalman Filter Code](https://towardsdatascience.com/sensor-fusion-part-2-kalman-filter-code-78b82c63dcd)~~
 
+도대체 칼만필터란 무엇인가? [\[1\]](https://blog.naver.com/pjy6075/221228342912), [\[2\]](https://blog.naver.com/pjy6075/221244351376), [\[공식설명\]](https://blog.naver.com/dusrb2003/220272227990),[코드분석](http://msnayana.blog.me/80107534127), [책정리](http://msnayana.blog.me/80144116755), [영문매거진](http://academic.csuohio.edu/simond/courses/eec644/kalman.pdf)  
+
+[Object tracking with LIDAR, Radar, sensor fusion and Extended Kalman Filter](http://www.coldvision.io/2017/04/15/object-tracking-with-lidar-radar-sensor-fusion-and-extended-kalman-filter/), [Sensor Fusion Algorithms For Autonomous Driving: Part 1 ](https://medium.com/@wilburdes/sensor-fusion-algorithms-for-autonomous-driving-part-1-the-kalman-filter-and-extended-kalman-a4eab8a833dd)
+
+네이버 OpenCV 카페 : [[강좌]Kalman filter의 중요 개념을 표시한 그림과 주석](https://cafe.naver.com/opencv/1647), [
+OpenCV 칼만필터에 관한 질문입니다~(Pk 관련)](https://cafe.naver.com/opencv/8734), [점 추적을 위한 칼만 필터 예제와 질문](https://cafe.naver.com/opencv/13685)
+
+[[추천] 칼만 필터 기초 - 알고리즘](http://lovely-embedded.tistory.com/15)
+
+
+
+
+
+### 3.3 ex칼만필터 
 
 
 ## 3. Tutorial (Series)
