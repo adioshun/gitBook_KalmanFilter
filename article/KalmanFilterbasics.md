@@ -138,12 +138,12 @@ This actually makes it a ‘variance’ matrix, but **covariance** is much more 
 우리는 이미 **updating state vector** 공식은 알고 있으며 **update covariance matrix** 공식은 아래와 같다. `We already have equations for updating state vector, and the equation to update covariance matrix is as given below.`
 
 
-- State\_vector: x = A \* x + B \* u
+- updating State\_vector: x = A \* x + B \* u
 
-- Covariance\_matrix: P = A \* P \* AT \* Q
+- update  Covariance\_matrix: P = A \* P \* AT \* Q
 
  
-**step a of predicting**의 최종 공식 `And with this we conclude our step a of predicting with following two equations.`
+
 
 
 
