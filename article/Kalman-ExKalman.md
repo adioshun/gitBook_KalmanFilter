@@ -75,6 +75,34 @@ As you can see, the final state vector x=[11.99, 2.05] is very close to the fina
 
 ## 2. The Extended Kalman filter — using Radar Data
 
+레이다는 좀더 복잡하다. 라이다와 다르게 polar좌표계를 사용하며 아래 정보들로 구성 되어 있다. `Radar data poses a slightly more difficult challenge. Radar data is returned in Polar co-ordinates. Radar data consists of 3 components i.e.`
+
+- ρ or Range (distance from the origin)
+- ϕ or bearing (the angle between ρ and x), and 
+- ρ˙which is the range rate.
 
 
+또한 H matrix대신 h(x)함수를 사용하여 state space와 measurement space를 맵핑한다. `As there is no H matrix that will map the state vector into the radar measurement space, we need a new function h(x) that will map the state space into the measurement space for the measurement update step. This function is derived by mapping the polar cordinates into the cartesian space and is defined as:`
 
+![](https://cdn-images-1.medium.com/max/1200/1*S4fUS4elQMQx1SWRS74MIw.png)
+
+This mapping introduces a non-linearlity which would invalidate the assumptions of the kalman filter that the process and measurement models are Gaussian. 
+
+The extended kalman filter approximates the nonlinear model by a local linear model and then applies the Kalman filter to this approximation. 
+
+This local linear approximation is obtained by computing a first order Taylor expansion around the current estimate. 
+
+The first order approximations are also called the Jacobian Matrix. 
+
+The derivations of the Jacoboians are a bit involved and we will not be covering these here. 
+
+However, these are well documented on several internet resources on the topic, but if you want to use these straight off the cuff then you can refer to the implementation code in the github reference below:
+
+
+## 3. Conclusion
+
+So far we have covered some of the fundamental algorithms used in sensor fusion for object tracking. 
+
+In the next part of this blog post we will look at the Unscented Kalman filter which overcomes the need to use an approximation for the projection. 
+
+We will also look at a more recent and increasingly popular technique called Particle filters based on Monte Carlo Integration.
