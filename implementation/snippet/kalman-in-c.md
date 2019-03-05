@@ -1,6 +1,8 @@
 # [칼만필터_2 kalman filter_2](https://msnayana.blog.me/80107534127)
 
 
+> [링크]((https://msnayana.blog.me/80107534127)에 코드 설명 포함 
+
 ```c
 int main()
 { 
