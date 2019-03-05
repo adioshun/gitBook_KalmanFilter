@@ -49,7 +49,7 @@ measurements = pd.read_csv('obj_pose-laser-radar-synthetic-input.txt', header=No
 ```python 
 # Manualy copy initial readings from first row of input file.
 prv_time = 1477010443000000/1000000.0
-x = np.array([
+x = np.array([  #초기 입력값 
         [0.312242],
         [0.5803398],
         [0],
@@ -84,13 +84,13 @@ RMSE (Root Mean Square Error) is used to judge performance of our algorithm agai
 
 ```python 
 #Initialize matrices P and A
-P = np.array([
+P = np.array([          #예측 불확실성 
         [1, 0, 0, 0],
         [0, 1, 0, 0],
         [0, 0, 1000, 0],
         [0, 0, 0, 1000]
         ])
-A = np.array([
+A = np.array([            # kinematic equation 
         [1.0, 0, 1.0, 0],
         [0, 1.0, 0, 1.0],
         [0, 0, 1.0, 0],
@@ -112,14 +112,14 @@ We initialize matrix P and A.
 
 ```python 
 
-H = np.array([
+H = np.array([                #크기 맞추기 위해 사용 
         [1.0, 0, 0, 0],
         [0, 1.0, 0, 0]
         ])
 
 I = np.identity(4)
 
-z_lidar = np.zeros([2, 1])
+z_lidar = np.zeros([2, 1])  # 입력값 
 
 ```
 
@@ -132,7 +132,7 @@ z_lidar = np.zeros([2, 1])
 ## 6. Matrix R
 
 ```python 
-R = np.array([
+R = np.array([        #측정 불확실성
         [0.0225, 0],
         [0, 0.0225]
         ])
