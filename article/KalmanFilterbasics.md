@@ -96,11 +96,11 @@ Here **matrix A and B** are just matrices representing **kinematic equations** f
 
 - 컴퓨터에도 불확실성은 존재 `This uncertainty factor holds true for computers too. `
 
-칼만필터의 특별한 점 A thought might have entered your mind saying, so what’s so great about Kalman filter, above mentioned kinematic equations been known for decade, we can use it in matrix form if you like it and start predicting. 
+- 칼만필터의 특별한 점 A thought might have entered your mind saying, so what’s so great about Kalman filter, above mentioned kinematic equations been known for decade, we can use it in matrix form if you like it and start predicting. 
 
-차량의 위치 예측시 불확실성도 같이 간주 해야 함 `So when we are asking computer to predict the value of our new state of vehicle, we need to ask it about its uncertainty too. `
+- 차량의 위치 예측시 불확실성도 같이 간주 해야 함 `So when we are asking computer to predict the value of our new state of vehicle, we need to ask it about its uncertainty too. `
 
-In Kalman filter language this **uncertainty** is represented as **covariance matric**. 
+- In Kalman filter language this **uncertainty** is represented as **covariance matric**. 
 
 > 칼만 필터에서 불확실성은 **covariance matric**로 표현 된다. 
 
@@ -119,7 +119,7 @@ P = [variance_px, 0, 0, 0],
     """
     ```
 
-0의 의미 : 서로 비의존적이다. `All the remaining 0 terms are to say that uncertainty in one value is independent of other value, meaning to say my position x uncertainty is nothing to do with my uncertainty in y direction. `
+> - 0의 의미 : 서로 비의존적이다. `All the remaining 0 terms are to say that uncertainty in one value is independent of other value, meaning to say my position x uncertainty is nothing to do with my uncertainty in y direction. `
 
 > - 항상 비 의존적이지는 않지만 간소화를 의해 본 예시에서는 0으로 처리 `This need not be true in every case. In some case the variables you are tracking may actually depend on each other. But we will use the simplistic approach here and make other values as 0.`
 
