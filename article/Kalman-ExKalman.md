@@ -11,3 +11,22 @@ It assumes that location variables are gaussian i.e. can be completely parametri
 
 
 ## 2. The Extended Kalman filter — using Radar Data
+
+
+### 2.1 State Prediction
+
+linear state space model 채택 [[다른 모델들 참고]](https://uk.mathworks.com/help/ident/ug/what-are-state-space-models.html)
+- at a time t can be estimated from state at time t-1 according to follow equation
+
+![](https://cdn-images-1.medium.com/max/1200/1*rv35k4mQgQr2UVrVRH9uMg.png)
+
+
+### 2.2 Measurement Update
+
+ algorithm that use real measurements z to update the predicted state x′ by a scaling factor (called the Kalman Gain) proportional to the error between the measurment and the the predicted state.
+ 
+ 
+![](https://cdn-images-1.medium.com/max/800/1*mOphU54_P-DgzPeeRLQP8g.png)
+
+
+ 

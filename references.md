@@ -73,7 +73,7 @@ OpenCV 칼만필터에 관한 질문입니다~(Pk 관련)](https://cafe.naver.co
 
 ## 6. Material (Pdf, ppt)
 
-
+- [Tutorial: The Kalman Filter](http://web.mit.edu/kirtley/kirtley/binlustuff/literature/control/Kalman%20filter.pdf): pdf 
 
 ## 7. Implementation (Project)
 
