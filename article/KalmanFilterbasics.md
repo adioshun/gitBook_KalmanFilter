@@ -94,9 +94,7 @@ Here **matrix A and B** are just matrices representing **kinematic equations** f
 
 #### B. State Covariance Matrix P (불확실) 
 
-
-
-컴퓨터에도 불확실성은 존재 `This uncertainty factor holds true for computers too. `
+- 컴퓨터에도 불확실성은 존재 `This uncertainty factor holds true for computers too. `
 
 칼만필터의 특별한 점 A thought might have entered your mind saying, so what’s so great about Kalman filter, above mentioned kinematic equations been known for decade, we can use it in matrix form if you like it and start predicting. 
 
