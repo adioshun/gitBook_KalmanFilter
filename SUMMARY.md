@@ -17,6 +17,7 @@
 ## Article
 
 * [Kalman Filter basics](article/KalmanFilterbasics.md)
+* [Kalman filter and Extended Kalman Filter](article/Kalman-ExKalman.md)
 
 ## Implementation
 
