@@ -23,7 +23,6 @@
 * [pykalman](implementation/pykalman.md)
 * [Multidimensional Kalman-Filter](implementation/multi-dim/README.md)
   * [칼만 with Constant Velocity Model](implementation/multi-dim/kalman-cvm.md)
-
 * [snippet](implementation/snippet.md)
   * [KalmanFilter-basic-code](implementation/snippet/kalmanfilter-basic-code.md)
 
