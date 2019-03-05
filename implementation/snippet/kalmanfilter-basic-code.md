@@ -2,13 +2,28 @@
 
 > 이론 설명은 : Article - Kalman Filter basics 참고 (Sensor Fusion — Part 1: Kalman Filter basics)
 
-[깃허브](https://github.com/PercyJaiswal/Kalman_Filter)
-- [Kalman Filter.py](https://github.com/PercyJaiswal/Kalman_Filter/blob/master/Kalman%20Filter.py)
-- [샘플파일.txt](https://github.com/PercyJaiswal/Kalman_Filter/blob/master/obj_pose-laser-radar-synthetic-input.txt)
+[깃허브](https://github.com/PercyJaiswal/Kalman_Filter) : [Kalman Filter.py](https://github.com/PercyJaiswal/Kalman_Filter/blob/master/Kalman%20Filter.py), [샘플파일.txt](https://github.com/PercyJaiswal/Kalman_Filter/blob/master/obj_pose-laser-radar-synthetic-input.txt)
 
 Udacity’s github 데이터 활용 실습 (`obj_pose-laser-radar-synthetic-input.txt`) 
 - 해당 데이터에는 Lidar + radar이지만 본 실습은 lidar만 활용
 - 추후 exKalman filter다룬시 Lidar+radar 실습 진행 
+
+
+구현 내용 
+
+```
+A. Predict:
+ a. X = A * X + B * u
+ b. P = A * P * AT * Q
+
+B. Measurement
+ a. Y = Z — H * X
+ b. K = ( P * HT ) / ( ( H * P * HT ) + R )
+
+C. Update
+ a. X = X + K * Y
+ b. P = ( I — K * H ) * P
+```
 
 
 데이터 구조 
