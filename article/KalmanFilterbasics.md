@@ -9,26 +9,21 @@
 
 
 기본 3가지 구성 요소 `Kalman filter in its most basic form consists of 3 steps. `
-- A) Predict — Based on previous knowledge of a vehicle position and kinematic equations, we predict what should be the position of vehicle after time t+1. 
-- B) Measurement — Get readings from sensor regarding position of vehicle and compare it with Prediction 
-- C) Update — Update our knowledge about position (or state) of vehicle based on our prediction and sensor readings. 
+- Predict — Based on previous knowledge of a vehicle position and kinematic equations, we predict what should be the position of vehicle after time t+1. 
+- Measurement — Get readings from sensor regarding position of vehicle and compare it with Prediction 
+- Update — Update our knowledge about position (or state) of vehicle based on our prediction and sensor readings. 
 
 여러 변형들 `All variants of Kalman filter are just different variants of above 3 steps, depending upon `
 - different Kinematic equations you want to use and 
 - different kind of sensor reading which you want to incorporate in algorithm. 
 
-차량 추적을 예로 각 단계들을 설명 하겠다. 
-
 ### 1.1 Predict 
-
 
 #### A. Input & kinematic equations
 
-기본적 속도, 거리, 시간 정보로 공식 세움 `Using basic equations of velocity, distance and time, we know that if position of my vehicle at time t is at x location, then at time t+1 the vehicle will be at location x + ((t + 1) — t) * v, where v is velocity of vehicle. `
-- x + ((t + 1) — t) * v 
+- 기본적 속도, 거리, 시간 정보로 공식 세움 `Using basic equations of velocity, distance and time, we know that if position of my vehicle at time t is at x location, then at time t+1 the vehicle will be at location x + ((t + 1) — t) * v, where v is velocity of vehicle. `
 
-가속도 정보를 알고 있으면 이를 고려함 `Digging in further, if we have acceleration value available with us, we can add it to above equation and update new position of vehicle to x + ((t + 1) — t) * v + 0.5 * a * ((t + 1) — t)2. `
-- x + ((t + 1) — t) * v + 0.5 * a * ((t + 1) — t)2
+- 가속도 정보를 알고 있으면 이를 고려함 `Digging in further, if we have acceleration value available with us, we can add it to above equation and update new position of vehicle to x + ((t + 1) — t) * v + 0.5 * a * ((t + 1) — t)2. `
 
 공식 : Formalizing above equations, lets denote current state of vehicle, 
 - which consists of its current location and velocity as a vector x. 
@@ -65,7 +60,7 @@ Coming back to 1s and 0s, lets convert our 4 individual equations into following
 
 So now our 4 equation gets clubbed together and they look like this.
 
-$$ x_{new} = A * x + B * u $$
+**x\_new = A \* x + B \* u **
 
 ![](https://cdn-images-1.medium.com/max/1600/1*MaQHT-LfjvssRgZlszejQg.png)
 
@@ -89,13 +84,8 @@ B = [
 
 첫행 : Taking first row from above matrix equation
 
-$$
-
-px_{new} = [(1 * px) + (0 * py) + (delta_t * vx) + (0 * vy) ] + [ (0.5 * delta_t * delta_t * acceleration_x) + (0 * acceleration_y) ]
-$$
-$$
-px\_new = px + delta_t * vx + 0.5 * acceleration_x * delta_t 2
-$$
+- px\_new = [(1 * px) + (0 * py) + (delta_t * vx) + (0 * vy) ] + [ (0.5 * delta_t * delta_t * acceleration_x) + (0 * acceleration_y) ]
+- px\_new = px + delta_t * vx + 0.5 * acceleration_x * delta_t 2
 
 which is same as one we had come up with before converting individual equations to matrix form. 
 
