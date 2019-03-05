@@ -25,6 +25,7 @@
   * [칼만 with Constant Velocity Model](implementation/multi-dim/kalman-cvm.md)
 * [snippet](implementation/snippet.md)
   * [KalmanFilter-basic-code](implementation/snippet/kalmanfilter-basic-code.md)
+  * [kalman-in-c](implementation/snippet/kalman-in-c.md)
 
 ## 활용
 
