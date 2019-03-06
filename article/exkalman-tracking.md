@@ -4,7 +4,7 @@
 
 ## 1. A minimal implementation of the Kalman Filter in python for the simplest 1D motion model
 
-simplest Kalman filter for estimating the motion in 1D.
+목적 : simplest Kalman filter for estimating the motion in 1D.
 
 입력  The input are 
 - the noisy 1D position measurements and 
@@ -46,7 +46,7 @@ for n in range(len(measurements)):
     [mu,sig] = predict(mu, sig, motion[n], motion_sig)
     print 'predict: ', (mu,sig)
  
-print [mu, sig]
+print [mu, sig]  #estimation position(mu), Trust(sigma)
 
  """결과물 
  update: (4.998000799680128, 3.9984006397441023) 
@@ -64,3 +64,15 @@ print [mu, sig]
 ```
 
 The initial position is set to 0 and its sigma to 10000 (very high uncertainty), and after only a few steps the position gets close to the measurement and with a smaller sigma (smaller uncertainty).
+
+## 2. A formal implementation of the Kalman Filter in Python using state and covariance matrices for the simplest 1D motion model
+
+목적 : A multi-dimensional Kalman filter for estimating the motion in 1D, with the state defined by position and velocity.
+
+입력 The input is defined by the initial state x (position and velocity) both set to 0. 
+
+For estimating the state at a later time the `state transition matrix F(모션모델)` is used, matrix which embeds the motion model in 1D:
+
+$$
+x_{k+1} = x_{k} + velocity * dt
+$$
