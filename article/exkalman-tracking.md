@@ -76,3 +76,8 @@ For estimating the state at a later time the `state transition matrix F(모션�
 $$
 x_{k+1} = x_{k} + velocity * dt
 $$
+
+
+출력 : The output is defined by 
+- the state x at a certain time, and 
+- its uncertainty matrix P.
