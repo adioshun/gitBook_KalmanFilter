@@ -44,6 +44,6 @@ The UKF is a powerful nonlinear estimation technique and has been shown to be a 
 - Inability to handle extremely non-Gaussian noise
 
 
-> 세개의 칼만필터 분석 : `A Comparison of Unscented and Extended Kalman Filtering for Estimating Quaternion Motion.`
+> 세개의 칼만필터 분석 : `[A Comparison of Unscented and Extended Kalman Filtering for Estimating Quaternion Motion.](https://ieeexplore.ieee.org/document/1243440)`
 
 
