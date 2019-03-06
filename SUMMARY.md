@@ -16,6 +16,7 @@
 
 ## Article
 
+* [How kalman works in picture](article/how-kalman-works-in-picture.md)
 * [Kalman Filter basics](article/KalmanFilterbasics.md)
 * [Kalman filter and Extended Kalman Filter](article/Kalman-ExKalman.md)
 * [exKalma for object Tracking](article/exkalman-tracking.md)
