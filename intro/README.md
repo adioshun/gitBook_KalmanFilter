@@ -29,6 +29,8 @@ Unfortunately, the EKF has two important potential drawbacks. First, the derivat
 
 ## 3. UKF (nonlinear)
 
+> EKF의 성능 향상 버젼
+
 To address these limitations, the unscented Kalman filter (UKF) was developed. The UKF operates on the premise that it is easier to approximate a Gaussian distribution than it is to approximate an arbitrary nonlinear function. Instead of linearizing using Jacobian matrices, the UKF using a deterministic sampling approach to capture the mean and covariance estimates with a minimal set of sample points.
 The UKF is a powerful nonlinear estimation technique and has been shown to be a superior alternative to the EKF in a variety of applications.
 
