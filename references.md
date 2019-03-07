@@ -73,7 +73,12 @@ OpenCV 칼만필터에 관한 질문입니다~(Pk 관련)](https://cafe.naver.co
 
 ## 6. Material (Pdf, ppt)
 
+### 6.1 Kalman filter
 - [Tutorial: The Kalman Filter](http://web.mit.edu/kirtley/kirtley/binlustuff/literature/control/Kalman%20filter.pdf): pdf 
+
+### 6.2 ex-kalman filter
+
+- [Self-Driving Car ND - Sensor Fusion - Extended Kalman Filters](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58b461d5_sensor-fusion-ekf-reference/sensor-fusion-ekf-reference.pdf) : pdf, 11p
 
 ## 7. Implementation (Project)
 
