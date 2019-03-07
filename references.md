@@ -13,6 +13,8 @@
 ## 3. Article (Post, blog, etc.)
 
 
+[[중요] What are all those matrices for the Kalman filter? Part I: x, F, P, H, R, u](https://discussions.udacity.com/t/what-are-all-those-matrices-for-the-kalman-filter-part-i-x-f-p-h-r-u/57046)
+
 ### 3.1 일반 
 
 
