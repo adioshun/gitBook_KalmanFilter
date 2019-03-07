@@ -30,6 +30,9 @@
 * [snippet](implementation/snippet.md)
   * [KalmanFilter-basic-code](implementation/snippet/kalmanfilter-basic-code.md)
   * [kalman-in-c](implementation/snippet/kalman-in-c.md)
+* [Udacity](https://legacy.gitbook.com/book/adioshun/sensor_fusion/edit#/edit/master/udacity/README.md?_k=9jwy8j)
+
+
 
 ## 활용
 
