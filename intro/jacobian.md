@@ -49,11 +49,21 @@
 ![](https://postfiles.pstatic.net/20140512_15/jinohpark79_1399895493407FS5R1_GIF/jacobian2.GIF?type=w2)
 
 
-### 2.3 예-[wiki](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)
+### 2.3 예시 
+
+#### A. [기본 변](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)
 
 
 ![](https://i.stack.imgur.com/6RBkW.png)
 
+#### B. [polar-Cartesian transformation](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)
+
+
+![](https://i.imgur.com/btvwfM9.png)
+
+
+
+---
 
 ```python 
 from pprint import pprint
