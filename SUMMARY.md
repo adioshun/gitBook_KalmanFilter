@@ -13,6 +13,7 @@
 * [Ex-Kalman 필터](intro/exkalman.md)
 * [un-Kalman 필터](intro/unkalman.md)
 * [Particle 필터](intro/particle.md)
+* [Jacobian](intro/jacobian.md)
 
 ## Article
 
@@ -46,4 +47,5 @@
 ## Tracking /w Kalman
 
 * [Tracking](https://legacy.gitbook.com/book/adioshun/object-tracking/details)
+
 
