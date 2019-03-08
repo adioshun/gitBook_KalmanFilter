@@ -59,7 +59,7 @@
 #### B. [polar-Cartesian transformation](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)
 
 
-![](https://i.imgur.com/btvwfM9.png)
+![](https://i.imgur.com/DeqD2Zu.png)
 
 
 
