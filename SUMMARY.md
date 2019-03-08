@@ -38,6 +38,8 @@
 * [Udacidy](sensorfusion/udacity/README.md)
   * [post-coldvision-io](sensorfusion/udacity/post-coldvision-io.md)
   * [post-mithi](sensorfusion/udacity/post-mithi.md)
+  * [code-matlab](sensorfusion/udacity/code-matlab.md)
+  * [code-python@mithi](sensorfusion/udacity/code-pythonmithi.md)
 * [센서 퓨전](https://legacy.gitbook.com/book/adioshun/sensor_fusion/details)
 * [References](sensorfusion/references.md)
 
