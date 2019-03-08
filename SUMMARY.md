@@ -33,9 +33,13 @@
 * [Udacity](https://legacy.gitbook.com/book/adioshun/sensor_fusion/edit#/edit/master/udacity/README.md?_k=9jwy8j)
 
 
+## 센서 퓨전 /w Kalman
 
-## 활용
-
+* [README](sensorfusion/README.md)
+* [Udacidy](sensorfusion/udacity/README.md)
 * [센서 퓨전](https://legacy.gitbook.com/book/adioshun/sensor_fusion/details)
+
+## Tracking /w Kalman
+
 * [Tracking](https://legacy.gitbook.com/book/adioshun/object-tracking/details)
 
