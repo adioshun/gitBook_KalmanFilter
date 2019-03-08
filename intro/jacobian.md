@@ -38,29 +38,69 @@
 
 ### 2.2 공식 
 
-- 1.  'n'개의 변수를 가진 함수가 'm'개 있다는 가정
+####  A.  'n'개의 변수를 가진 함수가 'm'개 있다는 가정
 
 ![](https://postfiles.pstatic.net/20140512_105/jinohpark79_1399895378163qBl6n_GIF/jacobian1.GIF?type=w2)
 
 
-- 2. 모두 편미분하려면 아래 식의=  J와 같은 벡터로 표현 이것이 Jacobian matrix 
+#### B. 모두 편미분하려면 아래 식의=  J와 같은 벡터로 표현 이것이 Jacobian matrix 
 
 
 ![](https://postfiles.pstatic.net/20140512_15/jinohpark79_1399895493407FS5R1_GIF/jacobian2.GIF?type=w2)
 
 
-### 2.3 예 
+### 2.3 예-[wiki](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)
 
 
-- 1. 다변수 함수 F
-
-![](https://wikimedia.org/api/rest_v1/media/math/render/svg/e80d8ccea9a5432ed715445b9811a254c908e747)
+![](https://i.stack.imgur.com/6RBkW.png)
 
 
+```python 
+from pprint import pprint
+from numpy import array, zeros, diag, diagflat, dot
+
+def jacobi(A,b,N=25,x=None):
+    """Solves the equation Ax=b via the Jacobi iterative method."""
+    # Create an initial guess if needed                                                                                                                                                            
+    if x is None:
+        x = zeros(len(A[0]))
+
+    # Create a vector of the diagonal elements of A                                                                                                                                                
+    # and subtract them from A                                                                                                                                                                     
+    D = diag(A)
+    R = A - diagflat(D)
+
+    # Iterate for N times                                                                                                                                                                          
+    for i in range(N):
+        x = (b - dot(R,x)) / D
+    return x
+
+A = array([[2.0,1.0],[5.0,7.0]])
+b = array([11.0,13.0])
+guess = array([1.0,1.0])
+
+sol = jacobi(A,b,N=25,x=guess)
+
+print "A:"
+pprint(A)
+
+print "b:"
+pprint(b)
+
+print "x:"
+pprint(sol)
 
 
-
-
+"""출력 
+A:
+array([[ 2.,  1.],
+       [ 5.,  7.]])
+b:
+array([ 11.,  13.])
+x:
+array([ 7.11110202, -3.22220342])
+"""
+```
 
 
 ---
@@ -68,3 +108,7 @@
 - [자코비안(Jacobian)이란 무엇인가](http://t-robotics.blogspot.com/2013/12/jacobian.html)
 
 - [편미분을 간단하게! Jacobian Matrix](https://blog.naver.com/jinohpark79/110190680093)
+
+- [Part 19: The Jacobian](https://home.wlu.edu/~levys/kalman_tutorial/kalman_19.html)
+
+- [Jacobi Method in Python and NumPy](https://www.quantstart.com/articles/Jacobi-Method-in-Python-and-NumPy)
