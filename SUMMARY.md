@@ -32,11 +32,12 @@
   * [kalman-in-c](implementation/snippet/kalman-in-c.md)
 * [Udacity](https://legacy.gitbook.com/book/adioshun/sensor_fusion/edit#/edit/master/udacity/README.md?_k=9jwy8j)
 
-
 ## 센서 퓨전 /w Kalman
 
 * [README](sensorfusion/README.md)
 * [Udacidy](sensorfusion/udacity/README.md)
+  * [post-coldvision-io](sensorfusion/udacity/post-coldvision-io.md)
+  * [post-mithi](sensorfusion/udacity/post-mithi.md)
 * [센서 퓨전](https://legacy.gitbook.com/book/adioshun/sensor_fusion/details)
 
 ## Tracking /w Kalman
