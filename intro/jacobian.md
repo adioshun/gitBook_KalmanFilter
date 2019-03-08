@@ -114,3 +114,5 @@ array([ 7.11110202, -3.22220342])
 - [Jacobi Method in Python and NumPy](https://www.quantstart.com/articles/Jacobi-Method-in-Python-and-NumPy)
 
 - [youtube] [Jacobian#1야코비안-기저변환과 넓이의 측정](https://www.youtube.com/watch?v=kzKQUVNEPhc&list=PL0q7DjoZohFuMRNxE9nvU16nx607cRGxI) 
+
+- khan [The Jacobian Determinant](https://www.youtube.com/watch?v=p46QWyHQE6M)
