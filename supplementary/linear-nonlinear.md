@@ -16,3 +16,5 @@
 
 
 ## 선형으로 결합되어 있는 함수 - ㅅㄴ형 함수 
+
+https://sdolnote.tistory.com/entry/LinearityNonlinearityFunction
