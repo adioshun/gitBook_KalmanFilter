@@ -4,8 +4,8 @@
 선형 
 - 원점을 지나는 1차직선
 - **직선의 특징**을 가짐 
-    - 중첩의 원리(principle of superposition)
     - 선형성의 원리(Linearity principle)
+    - 중첩의 원리(principle of superposition)
 - 단순, 하나의 원인에는 하나의 결과가 있을 뿐이며, 결과를 보고 원인이 어떤 것이었는지 짐작할 수 있다
 - eg. 한명이 10kg의 짐을 옮긴다면 2명은 20kg의 짐을 옮긴다. 
 - eg. y = 3x 
@@ -17,7 +17,20 @@
 
 
 
-## 중첩의 원리 
+## 1. Linearity 
+
+- 요구 사항 # 1 
+    - addivity 
+    - f(a+b) = f(a) + f(b)
+- 요구 사항 # 2 
+    - homogeniety 
+    - f(c*x) = c*f(x)
+    
+    
+
+
+
+## 2. 중첩의 원리 
 
 - 중첩[super (겹쳐) + position(위치시킴)]
 
