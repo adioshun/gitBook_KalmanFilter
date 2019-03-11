@@ -23,6 +23,8 @@
 
 - A라는 인자가 일으킨 현상과 B라는 인자가 일으킨 현상을 합한 것은 A와 B 두 인자가 함께 일으킨 현상과 동일하다
 
+- 선형 미분 방정식의 해의 선형 결합이 선형 미분 방정식의 또다른 해가 된다는 원리
+
 |![](https://t1.daumcdn.net/cfile/tistory/2761F3505550195A2D)|![](https://t1.daumcdn.net/cfile/tistory/2602794755501D042D)|
 |-|-|
 
@@ -31,4 +33,9 @@
 
 
 
+---
+
 https://sdolnote.tistory.com/entry/LinearityNonlinearityFunction
+
+[선형이라는 것의 의미 (Linear 하다는 것의 의미)(https://sdolnote.tistory.com/entry/Linearity)
+
