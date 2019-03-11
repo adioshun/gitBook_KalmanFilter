@@ -49,3 +49,9 @@
 * [Tracking](https://legacy.gitbook.com/book/adioshun/object-tracking/details)
 
 
+---
+
+## 참고 
+
+* [선형/비선형](supplementary/linear-nonlinear.md)
+
