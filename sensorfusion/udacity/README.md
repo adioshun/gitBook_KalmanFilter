@@ -66,3 +66,26 @@ Put your skills to the test! Use C++ to code an Unscented Kalman Filter capable 
 - Tools for Sensor Fusion processing.
 - visualizing and analyzing your data
 
+---
+
+# 파일 내용 
+
+[SENSOR ID] [SENSOR RAW VALUES] [TIMESTAMP] [GROUND TRUTH VALUES]
+
+Example 1:
+line with three measurements from a radar sensor in polar coordinate
+followed by a timestamp in unix time
+followed by the the "ground truth" which is
+actual real position and velocity in cartesian coordinates (four state variables)
+
+R 8.46642 0.0287602 -3.04035 1477010443399637 8.6 0.25 -3.00029 0
+(R) (rho) (phi) (drho) (timestamp) (real x) (real y) (real vx) (real vy)
+
+Example 2:
+line with two measurements from a lidar sensor in cartesian coordinates
+followed by a timestamp in unix time
+followed by the the "ground truth" which is
+the actual real position and velocity in cartesian coordinates (four state variables)
+
+L 8.44818 0.251553 1477010443449633 8.45 0.25 -3.00027 0
+
