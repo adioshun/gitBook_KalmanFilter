@@ -24,7 +24,7 @@
     - f(a+b) = f(a) + f(b)
 - 요구 사항 # 2 
     - homogeniety 
-    - f(c*x) = c*f(x)
+    - f(c*x) = c*f(x)  
     
     
 
