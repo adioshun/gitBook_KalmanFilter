@@ -10,6 +10,7 @@
 
 비선형 
 - 우리가 예상하지 못했던 훨씬 높은 차원의 현상
+- eg. exponents, square root
 - eg. 한명이 10kg의 짐을 옮기는데 2명은 30kg의 짐을 옮긴다. 
 - eg. y = 3x^2
 
@@ -47,3 +48,4 @@ https://sdolnote.tistory.com/entry/LinearityNonlinearityFunction
 
 [선형이라는 것의 의미 (Linear 하다는 것의 의미)(https://sdolnote.tistory.com/entry/Linearity)
 
+[The Difference Between Linear & Nonlinear Equations](https://sciencing.com/the-difference-between-linear-nonlinear-equations-12751668.html)
