@@ -13,7 +13,6 @@
 * [Ex-Kalman 필터](intro/exkalman.md)
 * [un-Kalman 필터](intro/unkalman.md)
 * [Particle 필터](intro/particle.md)
-* [Jacobian](intro/jacobian.md)
 * [Matrices](intro/matrices.md)
 
 ## Article
@@ -49,10 +48,8 @@
 
 * [Tracking](https://legacy.gitbook.com/book/adioshun/object-tracking/details)
 
-
----
-
-## 참고 
+## 참고
 
 * [선형/비선형](supplementary/linear-nonlinear.md)
 * [Jacobian](supplementary/jacobian.md)
+
