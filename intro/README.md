@@ -55,4 +55,4 @@ The UKF is a powerful nonlinear estimation technique and has been shown to be a 
 
 ---
 
-[google search]()
+[Summary on the Kalman Filter & Friends: KF, EKF, UKF, EIF, SEIF](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/pdf/slam08-kf-wrapup.pdf): ppt
