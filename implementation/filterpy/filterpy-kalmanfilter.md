@@ -47,13 +47,29 @@ Read-only Instance Variables
 ```python 
 from filterpy.kalman import KalmanFilter
 f = KalmanFilter (dim_x=2, dim_z=1)
+"""
+
+dim_x : int
+
+    Number of state variables for the Kalman filter. For example, if you are tracking the position and velocity of an object in two dimensions, dim_x would be 4. This is used to set the default size of P, Q, and u
+dim_z : int
+
+    Number of of measurement inputs. For example, if the sensor provides you with position in (x,y), dim_z would be 2.
+dim_u : int (optional)
+
+    size of the control input, if it is being used. Default value of 0 indicates it is not used.
+compute_log_likelihood : bool (default = True)
+
+    Computes log likelihood by default, but this can be a slow computation, so if you never use it you can turn this computation off.
+
+"""
 ```
 
 ### 2.2 Instance Variables
 
 ```python 
 
-# Assign the initial value for the state (position and velocity). You can do this with a two dimensional array like so:
+# 1. Assign the initial value for the state (position and velocity). You can do this with a two dimensional array like so:
 f.x = np.array([[2.],    # position
                 [0.]])   # velocity
 
@@ -61,37 +77,59 @@ f.x = np.array([[2.],    # position
 f.x = np.array([2., 0.])
 
 
-# Define the state transition matrix:
+# 2. Define the state transition matrix:
 
 f.F = np.array([[1.,1.],
                 [0.,1.]])
 
-# Define the measurement function:
+# 3. Define the measurement function:
 
 f.H = np.array([[1.,0.]])
 
-# Define the covariance matrix. 
+# 4. Define the covariance matrix. 
 ## Here I take advantage of the fact that P already contains np.eye(dim_x), and just multiply by the uncertainty:
 
 f.P *= 1000.
 
-I could have written:
+### I could have written:
 
 f.P = np.array([[1000.,    0.],
                 [   0., 1000.] ])
 
-You decide which is more readable and understandable.
+### You decide which is more readable and understandable.
 
-Now assign the measurement noise. Here the dimension is 1x1, so I can use a scalar
+# 5. Now assign the measurement noise. 
+### Here the dimension is 1x1, so I can use a scalar
 
 f.R = 5
 
-I could have done this instead:
+### I could have done this instead:
 
 f.R = np.array([[5.]])
 
-Note that this must be a 2 dimensional array, as must all the matrices.
+### Note that this must be a 2 dimensional array, as must all the matrices.
 
+# 6. Finally, I will assign the process noise. Here I will take advantage of another FilterPy library function:
+from filterpy.common import Q_discrete_white_noise
+f.Q = Q_discrete_white_noise(dim=2, dt=0.1, var=0.13)
+
+
+```
+
+### 2.3 실행 
+
+```python
+z = get_sensor_reading()
+f.predict()
+f.update(z)
+
+do_something_with_estimate (f.x)
+
+# Example
+while True:
+    z, R = read_sensor()
+    x, P = predict(x, P, F, Q)
+    x, P = update(x, P, z, R, H)
 
 
 ```
