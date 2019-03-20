@@ -26,9 +26,9 @@ $ python setup.py install
 구현 모듈
 
 * filterpy.kalman
-  * Linear Kalman Filters
-  * Extended Kalman Filter
-  * Unscented Kalman Filter
+  * Linear Kalman Filters : [[sample]](https://github.com/rlabbe/filterpy/blob/master/filterpy/kalman/tests/test_kf.py), [[sensorfusion sample]](https://github.com/rlabbe/filterpy/blob/master/filterpy/kalman/tests/test_sensor_fusion.py)
+  * Extended Kalman Filter : [[sample]](https://github.com/rlabbe/filterpy/blob/master/filterpy/kalman/tests/test_ekf.py)
+  * Unscented Kalman Filter : [[sample]](https://github.com/rlabbe/filterpy/blob/master/filterpy/kalman/tests/test_ukf.py)
   * Ensemble Kalman Filter
 * filterpy.common
 * filterpy.stats
