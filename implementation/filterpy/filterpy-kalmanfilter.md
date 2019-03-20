@@ -133,3 +133,38 @@ while True:
 
 
 ```
+
+---
+-매개변수
+
+dim_x : 상태 변수의 수로, 두 개체의 속도와 위치를 추적하고 있다면 4가 된다 (두 개체 * (속도 + 위치))
+
+dim_z :  측정 입력(measurement input)의 수,  센서가 (x, y)위치를 제공한다면 2가 된다
+
+dim_u : 제어 입력(control input)의 수
+
+
+-속성
+
+x : numpy.array(dim_x, 1), State estimate vector 상태 측정 벡터
+
+P : numpy.array(dim_x, dim_x), Covariance matrix 공분산 행렬, 여러 변수와 관련된 공분산을 포함하는 정방형 행렬
+
+R : numpy.array(dim_z, dim_z), Measurement noise matrix  측정 잡음 행렬
+
+Q : numpy.array(dim_x, dim_x), Process noise matrix 프로세스 잡음 행렬
+
+B : numpy.array(dim_x, dim_z), Control transition matrix, 제어 천이 행렬
+
+F : numpy.array(), State transition matrix 상태 천이 행렬, 시간의 변화에 따른 상태의 변화를 야기시키는 행렬
+
+H : numpy.array(dim_x, dim_x), Measurement function, 측정 기능
+
+
+-읽기 속성
+
+y : numpy.array, 갱신 단계의 나머지
+
+K : numpy.array(dim_x, dim_z), 업데이트 단계의 칼만 게인
+
+S : numpy.array, 측정 공간에 불확실하게 투영되는 시스템
