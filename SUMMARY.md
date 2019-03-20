@@ -26,6 +26,8 @@
 
 * [README](implementation/README.md)
 * [pykalman](implementation/pykalman.md)
+  * [pyKalman-LKF](implementation/pykalman/pykalman-lkf.md)
+  * [pyKalman-UKF](implementation/pykalman/pykalman-ukf.md)
 * [filterPy](implementation/filterpy.md)
   * [filterpy-kalmanfilter](implementation/filterpy/filterpy-kalmanfilter.md)
   * [filterpy-Rauch-Tung-Striebal Kalman smoother](implementation/filterpy/filterpy-rauch-tung-striebal-kalman-smoother.md)
