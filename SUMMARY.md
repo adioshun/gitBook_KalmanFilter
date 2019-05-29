@@ -27,6 +27,13 @@
 * [[python]Deep-Kalman-Filter](https://github.com/k920049/Deep-Kalman-Filter)
 * [[python]Deep_Robust_Kalman_Filter](https://github.com/k920049/Deep_Robust_Kalman_Filter)
 
+## [Book] 칼만필터는 어렵지 않아
+
+* [README](Book-kalman/README.md)
+* [Part 1 재귀 필터](Book-kalman/part01.md)
+
+
+
 ## Implementation
 
 * [README](implementation/README.md)
