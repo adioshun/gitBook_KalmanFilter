@@ -29,8 +29,8 @@
 
 ## [Book] 칼만필터는 어렵지 않아
 
-* [README](Book-kalman/README.md)
-* [Part 1 재귀 필터](Book-kalman/part01.md)
+* [README](Book-EssentialKalmanFilter/README.md)
+* [Part 1 재귀 필터](Book-EssentialKalmanFilter/part01.md)
 
 
 
