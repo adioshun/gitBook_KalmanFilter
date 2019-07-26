@@ -15,7 +15,7 @@ The red ellipse is estimated covariance ellipse with EKF.
 
 ### Filter design
 
-In this simulation, the robot has a state vector includes 4 states at time $t$.
+In this simulation, the robot has a state vector includes 4 states at time $$t$$.
 
 $$\textbf{x}_t=[x_t, y_t, \phi_t, v_t]$$
 
@@ -51,11 +51,17 @@ In the code, "observation" function generates the input and observation vector w
 
 The robot model is 
 
-$$ \dot{x} = vcos(\phi)$$
+$$ 
+\dot{x} = vcos(\phi)
+$$
 
-$$ \dot{y} = vsin((\phi)$$
+$$
+\dot{y} = vsin((\phi)
+$$
 
-$$ \dot{\phi} = \omega$$
+$$
+\dot{\phi} = \omega
+$$
 
 
 So, the motion model is
@@ -86,7 +92,25 @@ sin(\phi)dt & 0\\
 
 $$dt$$ is a time interval.
 
-This is implemented at [code](https://github.com/AtsushiSakai/PythonRobotics/blob/916b4382de090de29f54538b356cef1c811aacce/Localization/extended_kalman_filter/extended_kalman_filter.py#L53-L67)
+#### This is implemented at [code](https://github.com/AtsushiSakai/PythonRobotics/blob/916b4382de090de29f54538b356cef1c811aacce/Localization/extended_kalman_filter/extended_kalman_filter.py#L53-L67)
+
+```python 
+def motion_model(x, u):
+
+    F = np.array([[1.0, 0, 0, 0],
+                  [0, 1.0, 0, 0],
+                  [0, 0, 1.0, 0],
+                  [0, 0, 0, 0]])
+
+    B = np.array([[DT * math.cos(x[2, 0]), 0],
+                  [DT * math.sin(x[2, 0]), 0],
+                  [0.0, DT],
+                  [1.0, 0.0]])
+
+    x = F.dot(x) + B.dot(u)
+
+    return x
+ ```
 
 Its Jacobian matrix is
 
@@ -110,15 +134,39 @@ $$\begin{equation*}
 \end{bmatrix}
 \end{equation*}$$
 
+```python 
+def jacobF(x, u):
+    """
+    Jacobian of Motion Model
+    motion model
+    x_{t+1} = x_t+v*dt*cos(yaw)
+    y_{t+1} = y_t+v*dt*sin(yaw)
+    yaw_{t+1} = yaw_t+omega*dt
+    v_{t+1} = v{t}
+    so
+    dx/dyaw = -v*dt*sin(yaw)
+    dx/dv = dt*cos(yaw)
+    dy/dyaw = v*dt*cos(yaw)
+    dy/dv = dt*sin(yaw)
+    """
+    yaw = x[2, 0]
+    v = u[0, 0]
+    jF = np.array([
+        [1.0, 0.0, -DT * v * math.sin(yaw), DT * math.cos(yaw)],
+        [0.0, 1.0, DT * v * math.cos(yaw), DT * math.sin(yaw)],
+        [0.0, 0.0, 1.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0]])
+
+    return jF
+```
+
 ---
 
 ### Observation Model
 
 The robot can get x-y position infomation from GPS.
 
-So GPS Observation model is
-
-$$\textbf{z}_{t} = H\textbf{x}_t$$
+So GPS Observation model is : $$\textbf{z}_{t} = H\textbf{x}_t$$
 
 where
 
@@ -129,6 +177,20 @@ B=
 0 & 1 & 0& 0\\
 \end{bmatrix}
 \end{equation*}$$
+
+
+```python 
+def observation_model(x):
+    #  Observation Model
+    H = np.array([
+        [1, 0, 0, 0],
+        [0, 1, 0, 0]
+    ])
+
+    z = H.dot(x)
+
+    return z
+```
 
 Its Jacobian matrix is
 
@@ -148,6 +210,16 @@ $$\begin{equation*}
 \end{bmatrix}
 \end{equation*}$$
 
+```python 
+def jacobH(x):
+    # Jacobian of Observation Model
+    jH = np.array([
+        [1, 0, 0, 0],
+        [0, 1, 0, 0]
+    ])
+
+    return jH
+    ```
 
 ---
 
