@@ -29,9 +29,9 @@
 
 ## [Book] 칼만필터는 어렵지 않아
 
-* [README](Book-EssentialKalmanFilter/README.md)
-* [Part 1 재귀 필터](Book-EssentialKalmanFilter/part01.md)
-* [Part 2 칼만 필터](Book-EssentialKalmanFilter/part02.md)
+* [README](Book-Essential-Kalman-Filter/README.md)
+* [Part 1 재귀 필터](Book-Essential-Kalman-Filter/part01.md)
+* [Part 2 칼만 필터](Book-Essential-Kalman-Filter/part02.md)
 
 
 ## [Book] PythonRobotics 
@@ -39,6 +39,10 @@
 * [README](Book-PythonRobotics/README.md)
 * [Extended Kalman Filter Localization](Book-PythonRobotics/EKF.md)
 
+
+## [Book] Kalman and Bayesian Filters in Python
+
+* [README](Book-Kalman-Bayesian-Filters-in-Python/README.md)
 
 
 
