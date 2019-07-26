@@ -233,6 +233,14 @@ $$x_{Pred} = Fx_t+Bu_t$$
 
 $$P_{Pred} = J_FP_t J_F^T + Q$$
 
+```python 
+    #  Predict
+    xPred = motion_model(xEst, u)
+    jF = jacobF(xPred, u)
+    PPred = jF.dot(PEst).dot(jF.T) + R
+
+```
+
 #### === Update ===
 
 $$z_{Pred} = Hx_{Pred}$$
@@ -247,3 +255,13 @@ $$x_{t+1} = x_{Pred} + Ky$$
 
 $$P_{t+1} = ( I - K J_H) P_{Pred}$$
 
+```python 
+    jH = jacobH(xPred)
+    zPred = observation_model(xPred)
+    y = z.T - zPred
+    S = jH.dot(PPred).dot(jH.T) + Q
+    K = PPred.dot(jH.T).dot(np.linalg.inv(S))
+    xEst = xPred + K.dot(y)
+    PEst = (np.eye(len(xEst)) - K.dot(jH)).dot(PPred)
+
+```
