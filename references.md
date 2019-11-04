@@ -63,12 +63,22 @@ OpenCV 칼만필터에 관한 질문입니다~(Pk 관련)](https://cafe.naver.co
 
 ## 4. Youtube
 
+Kalman Filter Design
+- https://www.youtube.com/watch?v=KYEr4BXhD_E&feature=youtu.be
+
+Kalman Filter Code - Artificial Intelligence for Robotics
+- https://www.youtube.com/watch?v=3xBycKfnCOQ&feature=youtu.be
+
+
+
+
 ![image](https://user-images.githubusercontent.com/17797922/40107264-bb9a86e4-5932-11e8-8d47-aa0ed5aef6ef.png)
 
 - [중등2 - AI for Robotics\(Stanford\)](https://www.youtube.com/playlist?list=PLlSZlNj22M7RJ_6BW8w699SucNXzZZo83): Youtube, 쥬피터 강사, 2017
 
 
 - [중등4 - Introduction to AI\(Stanford\)](https://www.youtube.com/playlist?list=PLlSZlNj22M7RtNfjq94w2m4E9U4Y1sAG5): 파티클 필터 , 쥬피터
+
 
 
 
