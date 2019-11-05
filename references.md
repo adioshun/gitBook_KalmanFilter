@@ -13,7 +13,9 @@
 ## 3. Article (Post, blog, etc.)
 
 
-[[중요] What are all those matrices for the Kalman filter? Part I: x, F, P, H, R, u](https://discussions.udacity.com/t/what-are-all-those-matrices-for-the-kalman-filter-part-i-x-f-p-h-r-u/57046)
+- [[중요] What are all those matrices for the Kalman filter? Part I: x, F, P, H, R, u](https://discussions.udacity.com/t/what-are-all-those-matrices-for-the-kalman-filter-part-i-x-f-p-h-r-u/57046)
+
+- [선형 칼만필터 기초](https://arx.appi.keio.ac.jp/wp-content/uploads/2018/01/test.pdf)
 
 ### 3.1 일반 
 
@@ -42,7 +44,9 @@
  
 - [코드분석](http://msnayana.blog.me/80107534127), [책정리](http://msnayana.blog.me/80144116755), [영문매거진](http://academic.csuohio.edu/simond/courses/eec644/kalman.pdf)  
 
-[Object tracking with LIDAR, Radar, sensor fusion and Extended Kalman Filter](http://www.coldvision.io/2017/04/15/object-tracking-with-lidar-radar-sensor-fusion-and-extended-kalman-filter/), [Sensor Fusion Algorithms For Autonomous Driving: Part 1 ](https://medium.com/@wilburdes/sensor-fusion-algorithms-for-autonomous-driving-part-1-the-kalman-filter-and-extended-kalman-a4eab8a833dd)
+[Object tracking with LIDAR, Radar, sensor fusion and Extended Kalman Filter](http://www.coldvision.io/2017/04/15/object-tracking-with-lidar-radar-sensor-fusion-and-extended-kalman-filter/),
+
+[Sensor Fusion Algorithms For Autonomous Driving: Part 1 ](https://medium.com/@wilburdes/sensor-fusion-algorithms-for-autonomous-driving-part-1-the-kalman-filter-and-extended-kalman-a4eab8a833dd)
 
 네이버 OpenCV 카페 : [[강좌]Kalman filter의 중요 개념을 표시한 그림과 주석](https://cafe.naver.com/opencv/1647), [
 OpenCV 칼만필터에 관한 질문입니다~(Pk 관련)](https://cafe.naver.com/opencv/8734), [점 추적을 위한 칼만 필터 예제와 질문](https://cafe.naver.com/opencv/13685)
