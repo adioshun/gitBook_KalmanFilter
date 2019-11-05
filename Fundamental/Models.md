@@ -1,6 +1,8 @@
 # Models 
 
 
+> https://medium.com/@jonathan_hui/self-driving-object-tracking-intuition-and-the-math-behind-kalman-filter-657d11dd0a90
+
 ## 1. 
 
 
